@@ -1,7 +1,5 @@
 FROM ubuntu:20.10
 
-ARG ESP_IDF_REV=a92185263e983a40a9d74df0e03e2c7228df0fa6 
-
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=UTC
 
@@ -45,6 +43,8 @@ COPY bashrc .bashrc
 
 RUN \
      git clone https://github.com/espressif/esp-idf.git
+
+ARG ESP_IDF_REV=21ecef5c56e01d3cccf0648c869e3fa9248bf3d4
 
 RUN \
      cd esp-idf \
