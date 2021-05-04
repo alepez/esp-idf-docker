@@ -44,7 +44,7 @@ COPY bashrc .bashrc
 RUN \
      git clone https://github.com/espressif/esp-idf.git
 
-ARG ESP_IDF_REV=21ecef5c56e01d3cccf0648c869e3fa9248bf3d4
+ARG ESP_IDF_REV=e9cf9e2978d0187b0f83a9978391217e39946517
 
 RUN \
      cd esp-idf \
