@@ -23,7 +23,6 @@ RUN apt-get update -qqy && \
       python3-pip \
       python3-setuptools \
       rsync \
-      ssh \
       tar \
       vim \
       wget \
@@ -51,9 +50,3 @@ RUN \
   && git checkout ${ESP_IDF_REV} \
   && git submodule update --init --recursive \
   && ./install.sh
-
-USER root
-RUN echo /tmp/stderr{,.pub} | xargs -n 1 ln -sf /dev/stderr && yes | ssh-keygen -t ecdsa -b 521 -N '' -qf /tmp/stderr > /dev/null
-RUN service ssh start && service ssh stop
-
-CMD [ "/usr/sbin/sshd", "-D", "-o", "ListenAddress=0.0.0.0" ]
