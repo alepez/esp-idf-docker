@@ -22,9 +22,7 @@ RUN apt-get update -qqy && \
       python3 \
       python3-pip \
       python3-setuptools \
-      rsync \
       tar \
-      vim \
       wget \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
@@ -50,3 +48,5 @@ RUN \
   && git checkout ${ESP_IDF_REV} \
   && git submodule update --init --recursive \
   && ./install.sh
+
+USER root
