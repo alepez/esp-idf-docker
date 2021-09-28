@@ -41,11 +41,12 @@ COPY bashrc .bashrc
 RUN \
      git clone https://github.com/espressif/esp-idf.git
 
-ARG ESP_IDF_REV
+ARG ESP_IDF_REF
 
 RUN \
-     cd esp-idf \
-  && git checkout ${ESP_IDF_REV} \
+     echo "ESP_IDF_REF=${ESP_IDF_REF}" \
+  && cd esp-idf \
+  && git checkout ${ESP_IDF_REF} \
   && git submodule update --init --recursive \
   && ./install.sh
 

@@ -1,7 +1,7 @@
 MANTAINER=alepez
 IMAGE_NAME=esp-idf
-VERSION=4.3.1                                                   # KEEP_UPDATED
-ESP_IDF_REF=2e74914051d14ec2290fc751a8486fb51d73a31e            # KEEP_UPDATED
+VERSION=4.3.1
+ESP_IDF_REF=2e74914051d14ec2290fc751a8486fb51d73a31e
 TAG=${MANTAINER}/${IMAGE_NAME}:${VERSION}
 
 .PHONY: build
