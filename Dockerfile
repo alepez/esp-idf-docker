@@ -24,6 +24,7 @@ RUN apt-get update -qqy && \
       python3-setuptools \
       tar \
       wget \
+      zip \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
