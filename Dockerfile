@@ -55,4 +55,11 @@ RUN \
 RUN \
   sed -i 's/^enable_autocomplete$//' /home/builder/esp-idf/export.sh
 
+USER root
+
+# Force /bin/sh to be /bin/bash
+# See https://gitlab.com/gitlab-org/gitlab-runner/-/issues/27614
+RUN \
+  ln -snf /bin/bash /bin/sh
+
 USER builder
