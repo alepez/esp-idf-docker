@@ -51,4 +51,8 @@ RUN \
   && git submodule update --init --recursive \
   && ./install.sh
 
+# Fix hanging script on login
+RUN \
+  sed -i 's/^enable_autocomplete$//' /home/builder/esp-idf/export.sh
+
 USER root
