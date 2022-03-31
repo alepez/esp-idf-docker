@@ -55,4 +55,4 @@ RUN \
 RUN \
   sed -i 's/^enable_autocomplete$//' /home/builder/esp-idf/export.sh
 
-USER root
+USER builder
