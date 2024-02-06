@@ -48,8 +48,8 @@ RUN \
      echo "ESP_IDF_REF=${ESP_IDF_REF}" \
   && cd esp-idf \
   && git checkout ${ESP_IDF_REF} \
-  && git submodule update --init --recursive \
   && git describe --always --tags --match 'v*' --dirty \
+  && git submodule update --init --recursive \
   && ./install.sh
 
 # Fix hanging script on login
