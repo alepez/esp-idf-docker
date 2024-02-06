@@ -1,4 +1,4 @@
-FROM ubuntu:21.10
+FROM ubuntu:23.10
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=UTC
@@ -18,7 +18,6 @@ RUN apt-get update -qqy && \
       libssl-dev \
       libusb-1.0-0 \
       ninja-build \
-      python \
       python3 \
       python3-pip \
       python3-setuptools \
@@ -27,6 +26,10 @@ RUN apt-get update -qqy && \
       zip \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update -qqy && \
+    apt-get install -qqy \
+      python3.11-venv
 
 RUN \
   useradd -m builder \
