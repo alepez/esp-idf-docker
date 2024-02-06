@@ -21,15 +21,12 @@ RUN apt-get update -qqy && \
       python3 \
       python3-pip \
       python3-setuptools \
+      python3.11-venv \
       tar \
       wget \
       zip \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update -qqy && \
-    apt-get install -qqy \
-      python3.11-venv
 
 RUN \
   useradd -m builder \
