@@ -49,12 +49,19 @@ RUN \
   && cd esp-idf \
   && git checkout ${ESP_IDF_REF} \
   && git describe --always --tags --match 'v*' --dirty \
-  && git submodule update --init --recursive \
+  && git submodule update --init --recursive
+
+USER root
+RUN rm /usr/lib/python3.11/EXTERNALLY-MANAGED
+USER builder
+
+RUN \
+  cd esp-idf \
   && ./install.sh
 
 # Fix hanging script on login
 RUN \
-  sed -i 's/^enable_autocomplete$//' /home/builder/esp-idf/export.sh
+  sed -i 's/__main && __enable_autocomplete/__main/' /home/builder/esp-idf/export.sh
 
 USER root
 
