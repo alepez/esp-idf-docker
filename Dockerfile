@@ -29,9 +29,13 @@ RUN apt-get update -qqy && \
   && rm -rf /var/lib/apt/lists/*
 
 RUN \
-  useradd -m builder \
+  deluser --remove-home ubuntu \
+  && useradd -m builder \
   && usermod -s /bin/bash builder \
   && echo 'builder:builder' | chpasswd
+
+# Prevent esp-idf install error when it tries to use pip
+RUN rm /usr/lib/python3.11/EXTERNALLY-MANAGED
 
 USER builder
 
@@ -49,14 +53,7 @@ RUN \
   && cd esp-idf \
   && git checkout ${ESP_IDF_REF} \
   && git describe --always --tags --match 'v*' --dirty \
-  && git submodule update --init --recursive
-
-USER root
-RUN rm /usr/lib/python3.11/EXTERNALLY-MANAGED
-USER builder
-
-RUN \
-  cd esp-idf \
+  && git submodule update --init --recursive \
   && ./install.sh
 
 # Fix hanging script on login
